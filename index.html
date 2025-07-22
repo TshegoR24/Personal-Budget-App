@@ -6,63 +6,59 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
-    <title>Budget App</title>
+    <title>Personal Budget Tracker</title>
 </head>
 <body>
     <div class="container">
+        <header class="app__header">
+            <h1>💰 Personal Budget Tracker</h1>
+            <p>Track your income and expenses with ease</p>
+        </header>
+        
         <div class="budget__numbers">
             <div id="earned" class="number">
                 <small>Money Earned</small>
                 <div class="amount__container">
                     <p id="earned__symbol">$</p>
-                    <span id="amount__earned"></span>
+                    <span id="amount__earned">0.00</span>
                 </div>
             </div>
             <div id="available" class="number">
                 <small>Money Available</small>
                 <div class="amount__container">
                     <p>$</p>
-                    <span id="amount__available"></span>
+                    <span id="amount__available">0.00</span>
                 </div>
             </div>
             <div id="spent" class="number">
                 <small>Money Spent</small>
                 <div class="amount__container">
                     <p id="spent__symbol">$</p>
-                    <span id="amount__spent"></span>
+                    <span id="amount__spent">0.00</span>
                 </div>
             </div>
         </div>
+        
         <div class="input__area">
-            <input type="text" id="description" placeholder="Description">
-            <input type="number" id="amount" placeholder="Amount">
+            <input type="text" id="description" placeholder="Enter description...">
+            <input type="number" id="amount" placeholder="Amount" step="0.01" min="0">
         </div>
+        
         <div class="buttons__area">
-            <button id="add__income">Add Income</button>
-            <button id="add__expense">Add Expense</button>
+            <button id="add__income">➕ Add Income</button>
+            <button id="add__expense">➖ Add Expense</button>
         </div>
+        
+        <div class="data__controls">
+            <button id="clear__all" class="clear__btn">🗑️ Clear All Data</button>
+        </div>
+        
         <div class="items__container">
             <div id="income__container" class="container">
-                <h2>Income</h2>
-                <!-- <div class="item income">
-                    <h4>Stuff sold</h4>
-                    <div class="item__income">
-                        <p class="symbol">$</p>
-                        <span class="income__amount">200</span>
-                    </div>
-                    <i class="far fa-trash-alt"></i>
-                </div> -->
+                <h2>📈 Income</h2>
             </div>
             <div id="expenses__container" class="container">
-                <h2>Expenses</h2>
-                <!-- <div class="item expense">
-                    <h4>Stuff bought</h4>
-                    <div class="item__expense">
-                        <p class="symbol">$</p>
-                        <span class="expense__amount">200</span>
-                    </div>
-                    <i class="far fa-trash-alt"></i>
-                </div> -->
+                <h2>📉 Expenses</h2>
             </div>
         </div>
     </div>
