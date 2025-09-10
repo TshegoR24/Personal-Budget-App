@@ -1,20 +1,28 @@
-const pool = require("../config/db");
+const { pool } = require("../config/db");
 
 const Transaction = {
-  async create(userId, description, amount, type) {
+  async create({ user_id, amount, type, description }) {
     const result = await pool.query(
       "INSERT INTO transactions (user_id, description, amount, type) VALUES ($1, $2, $3, $4) RETURNING *",
-      [userId, description, amount, type]
+      [user_id, description, amount, type]
     );
     return result.rows[0];
   },
 
-  async getAllByUser(userId) {
+  async findByUser(userId) {
     const result = await pool.query(
       "SELECT * FROM transactions WHERE user_id = $1 ORDER BY created_at DESC",
       [userId]
     );
     return result.rows;
+  },
+
+  async delete(id, userId) {
+    const result = await pool.query(
+      "DELETE FROM transactions WHERE id = $1 AND user_id = $2 RETURNING *",
+      [id, userId]
+    );
+    return result.rowCount > 0;
   },
 
   async getSummary(userId) {

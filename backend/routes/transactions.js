@@ -7,12 +7,11 @@ const router = express.Router();
 // Add new transaction
 router.post("/", auth, async (req, res) => {
   try {
-    const { amount, type, category, description } = req.body;
+    const { amount, type, description } = req.body;
     const newTx = await Transaction.create({
       user_id: req.user.id,
       amount,
       type,
-      category,
       description,
     });
     res.json(newTx);
